@@ -654,7 +654,7 @@
                     <exclude>org.mortbay.jetty:servlet-api-2.5</exclude>
                     <exclude>log4j:log4j</exclude>
                     <exclude>org.apache.logging.log4j:log4j-core</exclude>
-                    <exclude>jdk.tools:jdk.tools</exclude>
+<!--                    <exclude>jdk.tools:jdk.tools</exclude>-->
                     <exclude>org.json:json</exclude>
                     <exclude>org.beanshell:bsh</exclude>
                     <exclude>org.apache.calcite:*</exclude>
@@ -1357,12 +1357,12 @@
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-annotations</artifactId>
         <version>${hadoop.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>jdk.tools</groupId>
-            <artifactId>jdk.tools</artifactId>
-          </exclusion>
-        </exclusions>
+<!--        <exclusions>-->
+<!--          <exclusion>-->
+<!--            <groupId>jdk.tools</groupId>-->
+<!--            <artifactId>jdk.tools</artifactId>-->
+<!--          </exclusion>-->
+<!--        </exclusions>-->
       </dependency>
       <dependency>
         <groupId>org.apache.hadoop</groupId>
@@ -1388,12 +1388,12 @@
         <groupId>org.apache.hbase</groupId>
         <artifactId>hbase-annotations</artifactId>
         <version>${hbase.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>jdk.tools</groupId>
-            <artifactId>jdk.tools</artifactId>
-          </exclusion>
-        </exclusions>
+<!--        <exclusions>-->
+<!--          <exclusion>-->
+<!--            <groupId>jdk.tools</groupId>-->
+<!--            <artifactId>jdk.tools</artifactId>-->
+<!--          </exclusion>-->
+<!--        </exclusions>-->
       </dependency>
       <dependency>
         <groupId>org.apache.avro</groupId>
@@ -3477,10 +3477,10 @@
                 <artifactId>log4j</artifactId>
                 <groupId>log4j</groupId>
               </exclusion>
-              <exclusion>
-                <groupId>jdk.tools</groupId>
-                <artifactId>jdk.tools</artifactId>
-              </exclusion>
+<!--              <exclusion>-->
+<!--                <groupId>jdk.tools</groupId>-->
+<!--                <artifactId>jdk.tools</artifactId>-->
+<!--              </exclusion>-->
             </exclusions>
           </dependency>
           <dependency>

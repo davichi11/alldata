@@ -252,11 +252,11 @@ under the License.
                     <groupId>org.apache.tez</groupId>
                     <artifactId>tez-common</artifactId>
                 </exclusion>
-                <exclusion>
-                    <!-- This dependency is no longer shipped with the JDK since Java 9.-->
-                    <groupId>jdk.tools</groupId>
-                    <artifactId>jdk.tools</artifactId>
-                </exclusion>
+<!--                <exclusion>-->
+<!--                    &lt;!&ndash; This dependency is no longer shipped with the JDK since Java 9.&ndash;&gt;-->
+<!--                    <groupId>jdk.tools</groupId>-->
+<!--                    <artifactId>jdk.tools</artifactId>-->
+<!--                </exclusion>-->
                 <exclusion>
                     <artifactId>hadoop-common</artifactId>
                     <groupId>org.apache.hadoop</groupId>
@@ -343,11 +343,11 @@ under the License.
                     <groupId>com.google.guava</groupId>
                     <artifactId>guava</artifactId>
                 </exclusion>
-                <exclusion>
-                    <!-- This dependency is no longer shipped with the JDK since Java 9.-->
-                    <groupId>jdk.tools</groupId>
-                    <artifactId>jdk.tools</artifactId>
-                </exclusion>
+<!--                <exclusion>-->
+<!--                    &lt;!&ndash; This dependency is no longer shipped with the JDK since Java 9.&ndash;&gt;-->
+<!--                    <groupId>jdk.tools</groupId>-->
+<!--                    <artifactId>jdk.tools</artifactId>-->
+<!--                </exclusion>-->
                 <exclusion>
                     <artifactId>hadoop-common</artifactId>
                     <groupId>org.apache.hadoop</groupId>
@@ -482,10 +482,10 @@ under the License.
             <version>${hive.version}</version>
             <scope>test</scope>
             <exclusions>
-                <exclusion>
-                    <groupId>jdk.tools</groupId>
-                    <artifactId>jdk.tools</artifactId>
-                </exclusion>
+<!--                <exclusion>-->
+<!--                    <groupId>jdk.tools</groupId>-->
+<!--                    <artifactId>jdk.tools</artifactId>-->
+<!--                </exclusion>-->
                 <exclusion>
                     <artifactId>jms</artifactId>
                     <groupId>javax.jms</groupId>

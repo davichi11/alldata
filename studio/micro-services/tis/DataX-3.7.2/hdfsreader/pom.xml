@@ -63,12 +63,12 @@
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-service</artifactId>
             <version>${hive.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jdk.tools</artifactId>
-                    <groupId>jdk.tools</groupId>
-                </exclusion>
-            </exclusions>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <artifactId>jdk.tools</artifactId>-->
+<!--                    <groupId>jdk.tools</groupId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>org.apache.hive</groupId>

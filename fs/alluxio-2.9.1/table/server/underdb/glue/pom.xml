@@ -100,10 +100,10 @@
               <groupId>com.google.protobuf</groupId>
               <artifactId>protobuf-java</artifactId>
             </exclusion>
-            <exclusion>
-              <groupId>jdk.tools</groupId>
-              <artifactId>jdk.tools</artifactId>
-            </exclusion>
+<!--            <exclusion>-->
+<!--              <groupId>jdk.tools</groupId>-->
+<!--              <artifactId>jdk.tools</artifactId>-->
+<!--            </exclusion>-->
           </exclusions>
         </dependency>
       </dependencies>

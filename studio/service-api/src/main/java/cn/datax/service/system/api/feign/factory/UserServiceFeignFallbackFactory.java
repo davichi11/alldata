@@ -2,7 +2,7 @@ package cn.datax.service.system.api.feign.factory;
 
 import cn.datax.service.system.api.feign.UserServiceFeign;
 import cn.datax.service.system.api.feign.fallback.UserServiceFeignFallbackImpl;
-import feign.hystrix.FallbackFactory;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 @Component

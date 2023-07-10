@@ -1119,10 +1119,10 @@
         <version>${hadoop.version}</version>
         <scope>provided</scope>
         <exclusions>
-          <exclusion>
-            <groupId>jdk.tools</groupId>
-            <artifactId>jdk.tools</artifactId>
-          </exclusion>
+<!--          <exclusion>-->
+<!--            <groupId>jdk.tools</groupId>-->
+<!--            <artifactId>jdk.tools</artifactId>-->
+<!--          </exclusion>-->
           <exclusion>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
@@ -1224,10 +1224,10 @@
         <classifier>tests</classifier>
         <version>${hadoop.version}</version>
         <exclusions>
-          <exclusion>
-            <groupId>jdk.tools</groupId>
-            <artifactId>jdk.tools</artifactId>
-          </exclusion>
+<!--          <exclusion>-->
+<!--            <groupId>jdk.tools</groupId>-->
+<!--            <artifactId>jdk.tools</artifactId>-->
+<!--          </exclusion>-->
           <exclusion>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>

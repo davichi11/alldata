@@ -1,0 +1,10 @@
+server:
+  port: 8810
+
+# 数据源配置
+spring:
+  application:
+    name: service-data-system
+  profiles:
+    active: dev
+

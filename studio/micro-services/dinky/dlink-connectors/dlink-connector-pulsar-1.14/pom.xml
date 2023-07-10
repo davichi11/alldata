@@ -74,11 +74,11 @@
             <version>${hadoop.version}</version>
             <scope>test</scope>
             <exclusions>
-                <exclusion>
-                    <!-- This dependency is no longer shipped with the JDK since Java 9.-->
-                    <groupId>jdk.tools</groupId>
-                    <artifactId>jdk.tools</artifactId>
-                </exclusion>
+<!--                <exclusion>-->
+<!--                    &lt;!&ndash; This dependency is no longer shipped with the JDK since Java 9.&ndash;&gt;-->
+<!--                    <groupId>jdk.tools</groupId>-->
+<!--                    <artifactId>jdk.tools</artifactId>-->
+<!--                </exclusion>-->
                 <exclusion>
                     <!-- This dependency is no longer shipped with the JDK since Java 9.-->
                     <groupId>io.netty</groupId>

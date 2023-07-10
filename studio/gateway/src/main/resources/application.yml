@@ -1,0 +1,13 @@
+server:
+  port: 9538
+
+spring:
+  application:
+    name: gateway
+  profiles:
+    active: dev
+
+
+logging:
+  file:
+    path: ../logs/alldata/gateway

@@ -196,7 +196,7 @@
             <artifactId>scala-compiler</artifactId>
             <version>${scala.version}</version>
         </dependency>
-        
+
         <!-- test dependency -->
         <dependency>
             <groupId>com.netease.arctic</groupId>
@@ -240,12 +240,12 @@
             <artifactId>hive-metastore</artifactId>
             <version>${hive.version}</version>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>jdk.tools</groupId>
-                    <artifactId>jdk.tools</artifactId>
-                </exclusion>
-            </exclusions>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>jdk.tools</groupId>-->
+<!--                    <artifactId>jdk.tools</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
 
     </dependencies>

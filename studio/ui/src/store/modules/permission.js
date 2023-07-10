@@ -1,4 +1,4 @@
-import { constantRouterMap } from '@/router/routers'
+import {constantRouterMap} from '@/router/routers'
 import Layout from '@/layout/index'
 import ParentView from '@/components/ParentView'
 
@@ -18,16 +18,19 @@ const permission = {
     }
   },
   actions: {
-    GenerateRoutes({ commit }, asyncRouter) {
+    GenerateRoutes({commit}, asyncRouter) {
       commit('SET_ROUTERS', asyncRouter)
     },
-    SetSidebarRouters({ commit }, sidebarRouter) {
+    SetSidebarRouters({commit}, sidebarRouter) {
       commit('SET_SIDEBAR_ROUTERS', sidebarRouter)
     }
   }
 }
 
 export const filterAsyncRouter = (routers, lastRouter = false, type = false) => { // 遍历后台传来的路由字符串，转换为组件对象
+  if (!(routers instanceof Array)) {
+    return false
+  }
   return routers.filter(router => {
     if (type && router.children) {
       router.children = filterChildren(router.children)
@@ -49,7 +52,7 @@ export const filterAsyncRouter = (routers, lastRouter = false, type = false) => 
       delete router['redirect']
     }
     return true
-  })
+  });
 }
 
 function filterChildren(childrenMap, lastRouter = false) {

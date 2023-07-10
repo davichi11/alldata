@@ -3,6 +3,8 @@ package cn.datax.gateway.config;
 import cn.datax.gateway.handler.HystrixFallbackHandler;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.gateway.route.RouteLocator;
+import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -26,4 +28,5 @@ public class RouterFunctionConfiguration {
                 RequestPredicates.path("/fallback")
                         .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), hystrixFallbackHandler);
     }
+
 }

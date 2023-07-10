@@ -202,10 +202,10 @@
                     <groupId>com.tdunning</groupId>
                     <artifactId>json</artifactId>
                 </exclusion>
-                <exclusion>
-                    <groupId>jdk.tools</groupId>
-                    <artifactId>jdk.tools</artifactId>
-                </exclusion>
+<!--                <exclusion>-->
+<!--                    <groupId>jdk.tools</groupId>-->
+<!--                    <artifactId>jdk.tools</artifactId>-->
+<!--                </exclusion>-->
                 <exclusion>
                     <groupId>com.nimbusds</groupId>
                     <artifactId>nimbus-jose-jwt</artifactId>
@@ -483,12 +483,12 @@
                     <groupId>javax.servlet.jsp</groupId>
                     <artifactId>jsp-api</artifactId>
                 </exclusion>
-                <exclusion>
-                    <!-- jdk.tools, the source code and LICENSE declaration are not found,
-                         MUST be excluded in the distribution package -->
-                    <groupId>jdk.tools</groupId>
-                    <artifactId>jdk.tools</artifactId>
-                </exclusion>
+<!--                <exclusion>-->
+<!--                    &lt;!&ndash; jdk.tools, the source code and LICENSE declaration are not found,-->
+<!--                         MUST be excluded in the distribution package &ndash;&gt;-->
+<!--                    <groupId>jdk.tools</groupId>-->
+<!--                    <artifactId>jdk.tools</artifactId>-->
+<!--                </exclusion>-->
                 <exclusion>
                     <groupId>com.github.stephenc.jcip</groupId>
                     <artifactId>jcip-annotations</artifactId>

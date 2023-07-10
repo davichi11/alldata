@@ -716,10 +716,10 @@ under the License.
                         <artifactId>servlet-api</artifactId>
                         <groupId>javax.servlet</groupId>
                     </exclusion>
-                    <exclusion>
-                        <groupId>jdk.tools</groupId>
-                        <artifactId>jdk.tools</artifactId>
-                    </exclusion>
+<!--                    <exclusion>-->
+<!--                        <groupId>jdk.tools</groupId>-->
+<!--                        <artifactId>jdk.tools</artifactId>-->
+<!--                    </exclusion>-->
                     <exclusion>
                         <groupId>org.apache.logging.log4j</groupId>
                         <artifactId>log4j-1.2-api</artifactId>
@@ -838,10 +838,10 @@ under the License.
                 <version>${hadoop.version}</version>
                 <scope>provided</scope>
                 <exclusions>
-                    <exclusion>
-                        <groupId>jdk.tools</groupId>
-                        <artifactId>jdk.tools</artifactId>
-                    </exclusion>
+<!--                    <exclusion>-->
+<!--                        <groupId>jdk.tools</groupId>-->
+<!--                        <artifactId>jdk.tools</artifactId>-->
+<!--                    </exclusion>-->
                     <exclusion>
                         <groupId>org.eclipse.jetty</groupId>
                         <artifactId>jetty-util</artifactId>
@@ -979,7 +979,7 @@ under the License.
                 <artifactId>aws-java-sdk-dynamodb</artifactId>
                 <version>${aws-java-sdk.version}</version>
             </dependency>
-            <dependency> 
+            <dependency>
                 <groupId>org.mariadb.jdbc</groupId>
                 <artifactId>mariadb-java-client</artifactId>
                 <version>${mariadb-java-client.version}</version>

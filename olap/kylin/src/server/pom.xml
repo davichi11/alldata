@@ -442,7 +442,6 @@
                                 mysql,
                                 net.sf.py4j,
                                 com.h2database,
-                                jdk.tools,
                             </excludeGroupIds>
                             <excludeArtifactIds>
                                 unused

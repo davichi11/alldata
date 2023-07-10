@@ -36,10 +36,10 @@
             <artifactId>hbase-server</artifactId>
             <version>${hbase.version}</version>
             <exclusions>
-                 <exclusion>
-                    <groupId>jdk.tools</groupId>
-                    <artifactId>jdk.tools</artifactId>
-                </exclusion>
+<!--                 <exclusion>-->
+<!--                    <groupId>jdk.tools</groupId>-->
+<!--                    <artifactId>jdk.tools</artifactId>-->
+<!--                </exclusion>-->
                 <exclusion>
                     <groupId>log4j</groupId>
                     <artifactId>*</artifactId>

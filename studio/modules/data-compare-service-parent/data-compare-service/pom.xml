@@ -37,10 +37,10 @@
 
     <dependencies>
         <!--配置中心客户端 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.cloud</groupId>-->
+<!--            <artifactId>spring-cloud-starter-config</artifactId>-->
+<!--        </dependency>-->
         <!-- SpringBoot 核心包 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -197,7 +197,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+
         <!-- 防止进入swagger页面报类型转换错误，排除3.0.0中的引用，手动增加1.6.2版本 -->
         <dependency>
             <groupId>io.swagger</groupId>
