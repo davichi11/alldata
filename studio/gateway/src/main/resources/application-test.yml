@@ -1,0 +1,182 @@
+server:
+  port: 9538
+
+spring:
+  application:
+    name: alldata-gateway
+  main:
+    allow-bean-definition-overriding: true
+    web-application-type: reactive
+  cloud:
+    nacos:
+      discovery:
+        # 服务注册地址
+        server-addr: ${NACOS_SERVER:172.16.100.101:8848}
+        group: ${NACOS_GROUP:datax}
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        # 系统基础设置中心
+        - id: service-system
+          uri: lb://service-system
+          predicates:
+            - Path=/system/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+        # 邮件中心
+        - id: service-email
+          uri: lb://service-email
+          predicates:
+            - Path=/email/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+        # 文件中心
+        - id: service-file
+          uri: lb://service-file
+          predicates:
+            - Path=/file/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+        # 元数据管理
+        - id: service-data-metadata
+          uri: lb://service-data-metadata
+          predicates:
+            - Path=/data/metadata/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+        # 数据SQL工作台
+        - id: service-data-console
+          uri: lb://service-data-console
+          predicates:
+            - Path=/data/console/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+        # 数据集市中心
+        - id: service-data-market
+          uri: lb://service-data-market
+          predicates:
+            - Path=/data/market/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+        # 数据API注册
+        - id: service-data-mapping
+          uri: lb://service-data-mapping
+          predicates:
+            - Path=/data/api/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+
+        # 数据服务集成
+        - id: service-data-integration
+          uri: lb://service-data-integration
+          predicates:
+            - Path=/data/service/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+        # 数据可视化
+        - id: service-data-visual
+          uri: lb://service-data-visual
+          predicates:
+            - Path=/data/visual/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+        # 主数据
+        - id: service-data-masterdata
+          uri: lb://service-data-masterdata
+          predicates:
+            - Path=/data/masterdata/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+        # 数据质量
+        - id: service-data-quality
+          uri: lb://service-data-quality
+          predicates:
+            - Path=/data/quality/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+        # 数据标准
+        - id: service-data-standard
+          uri: lb://service-data-standard
+          predicates:
+            - Path=/data/standard/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+        # data-system
+        - id: service-data-system
+          uri: lb://service-data-system
+          predicates:
+            - Path=/data/system/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+        # data-system
+        - id: service-data-compare
+          uri: lb://service-data-compare
+          predicates:
+            - Path=/data/compare/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+
+        # 定时任务
+        - id: service-quartz
+          uri: lb://service-quartz
+          predicates:
+            - Path=/quartz/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+
+        # 代码生成器
+        - id: service-codegen
+          uri: lb://service-codegen
+          predicates:
+            - Path=/codegen/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+
+        # 工作流
+        - id: service-workflow
+          uri: lb://service-workflow
+          predicates:
+            - Path=/workflow/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+
+        # 数据集成
+        - id: service-data-dts
+          uri: lb://service-data-dts
+          predicates:
+            - Path=/data/dts/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=2
+      default-filters:
+        - DedupeResponseHeader=Vary Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_FIRST
+
+logging:
+  file:
+    path: ../logs/alldata/gateway
