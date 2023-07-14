@@ -35,7 +35,9 @@ buildNumber.properties
 *.iws
 *.iml
 *.ipr
-
+*.log
+*.zip
+*.gz
 ### NetBeans ###
 nbproject/private/
 build/
