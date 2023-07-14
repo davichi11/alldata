@@ -2,7 +2,7 @@ package cn.datax.service.data.quality.api.feign.factory;
 
 import cn.datax.service.data.quality.api.feign.QualityServiceFeign;
 import cn.datax.service.data.quality.api.feign.fallback.QualityServiceFeignFallbackImpl;
-import feign.hystrix.FallbackFactory;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 @Component

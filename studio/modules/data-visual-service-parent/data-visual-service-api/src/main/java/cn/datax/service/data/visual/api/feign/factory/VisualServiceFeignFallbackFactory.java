@@ -3,7 +3,7 @@ package cn.datax.service.data.visual.api.feign.factory;
 
 import cn.datax.service.data.visual.api.feign.VisualServiceFeign;
 import cn.datax.service.data.visual.api.feign.fallback.VisualServiceFeignFallbackImpl;
-import feign.hystrix.FallbackFactory;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 @Component

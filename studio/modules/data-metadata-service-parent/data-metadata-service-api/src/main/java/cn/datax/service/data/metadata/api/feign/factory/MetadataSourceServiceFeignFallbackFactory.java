@@ -2,7 +2,7 @@ package cn.datax.service.data.metadata.api.feign.factory;
 
 import cn.datax.service.data.metadata.api.feign.MetadataSourceServiceFeign;
 import cn.datax.service.data.metadata.api.feign.fallback.MetadataSourceServiceFeignFallbackImpl;
-import feign.hystrix.FallbackFactory;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 @Component

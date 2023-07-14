@@ -16,9 +16,6 @@ import cn.datax.service.data.metadata.api.vo.MetadataSourceVo;
 import cn.datax.service.data.metadata.mapstruct.MetadataSourceMapper;
 import cn.datax.service.data.metadata.service.MetadataSourceService;
 import cn.hutool.core.util.StrUtil;
-import com.aspose.words.Document;
-import com.aspose.words.SaveFormat;
-import com.aspose.words.SaveOptions;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -30,11 +27,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.io.OutputStream;
 
 /**
  * <p>
@@ -102,6 +97,7 @@ public class MetadataSourceController extends BaseController {
 
     /**
      * 添加
+     *
      * @param metadataSourceDto
      * @return
      */
@@ -110,12 +106,13 @@ public class MetadataSourceController extends BaseController {
     @PostMapping()
     public R saveMetadataSource(@RequestBody @Validated({ValidationGroups.Insert.class}) MetadataSourceDto metadataSourceDto) {
         metadataSourceService.saveMetadataSource(metadataSourceDto);
-		metadataSourceService.refreshMetadata();
+        metadataSourceService.refreshMetadata();
         return R.ok();
     }
 
     /**
      * 修改
+     *
      * @param metadataSourceDto
      * @return
      */
@@ -127,12 +124,13 @@ public class MetadataSourceController extends BaseController {
     @PutMapping("/{id}")
     public R updateMetadataSource(@PathVariable String id, @RequestBody @Validated({ValidationGroups.Update.class}) MetadataSourceDto metadataSourceDto) {
         metadataSourceService.updateMetadataSource(metadataSourceDto);
-		metadataSourceService.refreshMetadata();
+        metadataSourceService.refreshMetadata();
         return R.ok();
     }
 
     /**
      * 删除
+     *
      * @param id
      * @return
      */
@@ -141,7 +139,7 @@ public class MetadataSourceController extends BaseController {
     @DeleteMapping("/{id}")
     public R deleteMetadataSourceById(@PathVariable String id) {
         metadataSourceService.deleteMetadataSourceById(id);
-		metadataSourceService.refreshMetadata();
+        metadataSourceService.refreshMetadata();
         return R.ok();
     }
 
@@ -150,12 +148,13 @@ public class MetadataSourceController extends BaseController {
     @DeleteMapping("/batch/{ids}")
     public R deleteMetadataSourceBatch(@PathVariable List<String> ids) {
         metadataSourceService.deleteMetadataSourceBatch(ids);
-		metadataSourceService.refreshMetadata();
+        metadataSourceService.refreshMetadata();
         return R.ok();
     }
 
     /**
      * 检测数据库连通性
+     *
      * @param metadataSourceDto
      * @return
      */
@@ -170,6 +169,7 @@ public class MetadataSourceController extends BaseController {
 
     /**
      * 数据库表
+     *
      * @param id
      * @return
      */
@@ -185,6 +185,7 @@ public class MetadataSourceController extends BaseController {
 
     /**
      * 数据库表结构
+     *
      * @param id
      * @return
      */
@@ -227,23 +228,23 @@ public class MetadataSourceController extends BaseController {
 
     }
 
-    @ApiOperation(value = "数据库设计文档", notes = "根据url的id来指定生成数据库设计文档对象")
-    @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "String", paramType = "path")
-    @PostMapping("/word/{id}")
-    public void wordMetadata(@PathVariable String id, HttpServletResponse response) throws Exception {
-        // 清空response
-        response.reset();
-        // 设置response的Header
-        response.setContentType("application/octet-stream;charset=utf-8");
-        // 设置content-disposition响应头控制浏览器以下载的形式打开文件
-        response.addHeader("Content-Disposition", "attachment;filename=" + new String("数据库设计文档.doc".getBytes()));
-	    Document doc = metadataSourceService.wordMetadata(id);
-        OutputStream out = response.getOutputStream();
-        doc.save(out, SaveOptions.createSaveOptions(SaveFormat.DOC));
-        out.flush();
-        out.close();
-        //return R.ok();
-    }
+//    @ApiOperation(value = "数据库设计文档", notes = "根据url的id来指定生成数据库设计文档对象")
+//    @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "String", paramType = "path")
+//    @PostMapping("/word/{id}")
+//    public void wordMetadata(@PathVariable String id, HttpServletResponse response) throws Exception {
+//        // 清空response
+//        response.reset();
+//        // 设置response的Header
+//        response.setContentType("application/octet-stream;charset=utf-8");
+//        // 设置content-disposition响应头控制浏览器以下载的形式打开文件
+//        response.addHeader("Content-Disposition", "attachment;filename=" + new String("数据库设计文档.doc".getBytes()));
+//	    Document doc = metadataSourceService.wordMetadata(id);
+//        OutputStream out = response.getOutputStream();
+//        doc.save(out, SaveOptions.createSaveOptions(SaveFormat.DOC));
+//        out.flush();
+//        out.close();
+//        //return R.ok();
+//    }
 
     /**
      * 刷新参数缓存

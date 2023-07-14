@@ -1,10 +1,10 @@
 server:
-  port: 8810
+  port: 8820
 
 # 数据源配置
 spring:
   application:
-    name: service-data-system
+    name: service-data-metadata
   redis:
     #数据库索引
     database: 5
@@ -31,9 +31,10 @@ spring:
         # group: DEFAULT_GROUP
         group: ${NACOS_GROUP:datax}
 
+
 mybatis-plus:
   mapper-locations: classpath*:mapper/*Mapper.xml
-  type-aliases-package: cn.datax.service.system.api.entity
+  type-aliases-package: cn.datax.service.data.metadata.api.entity
   global-config:
     db-config:
       id-type: ASSIGN_ID
@@ -72,7 +73,6 @@ swagger:
     name: AllDataDC
     url: https://github.com/alldatacenter/alldata
     email: m13602574132@163.com
-
 logging:
   file:
-    path: ../logs/alldata/data-system
+    path: ../logs/alldata/metadata

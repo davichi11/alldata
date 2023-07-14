@@ -234,7 +234,7 @@ public class MenuServiceImpl implements MenuService {
                 }
             }
         }
-        if(trees.size() == 0){
+        if(trees.isEmpty()){
             trees = menuDtos.stream().filter(s -> !ids.contains(s.getId())).collect(Collectors.toList());
         }
         return trees;
