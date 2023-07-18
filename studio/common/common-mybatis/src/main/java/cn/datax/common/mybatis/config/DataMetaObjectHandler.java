@@ -14,11 +14,11 @@ public class DataMetaObjectHandler implements MetaObjectHandler {
 		this.strictInsertFill(metaObject, "createTime", LocalDateTime.class, LocalDateTime.now());
 		this.strictInsertFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
 		this.strictInsertFill(metaObject, "status", String.class, DataConstant.EnableState.ENABLE.getKey());
-		this.strictInsertFill(metaObject, "createBy", String.class, SecurityUtil.getUserId());
-		this.strictInsertFill(metaObject, "updateBy", String.class, SecurityUtil.getUserId());
+		this.strictInsertFill(metaObject, "createBy", String.class, "1");
+		this.strictInsertFill(metaObject, "updateBy", String.class, "1");
 		boolean bolCreateDept = metaObject.hasSetter("createDept");
 		if (bolCreateDept) {
-			this.strictInsertFill(metaObject, "createDept", String.class, SecurityUtil.getUserDeptId());
+			this.strictInsertFill(metaObject, "createDept", String.class, "1");
 		}
 		boolean bolFlowStatus = metaObject.hasSetter("flowStatus");
 		if (bolFlowStatus) {

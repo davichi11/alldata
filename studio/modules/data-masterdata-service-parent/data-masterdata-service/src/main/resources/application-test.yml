@@ -1,16 +1,19 @@
-server:
-  port: 8820
-
 # 数据源配置
 spring:
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   application:
-    name: service-data-metadata
+    name: service-data-masterdata
   redis:
     #数据库索引
     database: 5
-    host: 172.16.100.172
-    port: 16379
-    password: Pwksh_2019
+    host: 110.42.242.13
+    port: 6379
+    password: pintuan!123
     #连接超时时间
     timeout: 5000
   datasource:
@@ -27,14 +30,28 @@ spring:
     nacos:
       discovery:
         # 服务注册地址
-        server-addr: ${NACOS_ADDR:172.16.100.101:8848}
+        server-addr: ${NACOS_ADDR:110.42.242.13:8848}
         # group: DEFAULT_GROUP
         group: ${NACOS_GROUP:datax}
+    config:
+      enabled: false
+  rabbitmq:
+    host: ${RABBIT_HOST:172.16.100.101}
+    port: ${RABBIT_PORT:5672}
+    username: ${RABBIT_USER:admin}
+    password: ${RABBIT_PASS:admin}
+    publisher-confirm-type: simple #开启发送确认
+    publisher-returns: true #开启发送失败退回
+    listener:
+      simple:
+        acknowledge-mode: manual
+        retry:
+          enabled: true
 
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*Mapper.xml
-  type-aliases-package: cn.datax.service.data.metadata.api.entity
+  type-aliases-package: cn.datax.service.data.masterdata.api.entity
   global-config:
     db-config:
       id-type: ASSIGN_ID
@@ -67,7 +84,7 @@ swagger:
   title: API接口文档
   description: Api Documentation
   version: 1.0.0
-  basePackage: cn.datax.service.system.controller
+  basePackage: cn.datax.service.data.masterdata.controller
   termsOfServiceUrl: https://github.com/alldatacenter/alldata
   contact:
     name: AllDataDC
@@ -75,4 +92,4 @@ swagger:
     email: m13602574132@163.com
 logging:
   file:
-    path: ../logs/alldata/metadata
+    path: ../logs/alldata/masterdata

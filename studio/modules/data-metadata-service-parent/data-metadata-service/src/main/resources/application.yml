@@ -5,7 +5,7 @@ spring:
   application:
     name: service-data-metadata
   profiles:
-    active: dev
+    active: test
 
 
 #jwt

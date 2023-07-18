@@ -135,6 +135,7 @@ public class ModelServiceImpl extends BaseServiceImpl<ModelDao, ModelEntity> imp
         if (DataConstant.TrueOrFalse.TRUE.getKey().equals(modelEntity.getIsSync())) {
             throw new DataException("重复建模");
         }
+        dynamicDao.dropTable(modelEntity.getModelPhysicalTable());
         dynamicDao.createTable(modelEntity);
         modelEntity.setIsSync(DataConstant.TrueOrFalse.TRUE.getKey());
         modelDao.updateById(modelEntity);
@@ -239,7 +240,7 @@ public class ModelServiceImpl extends BaseServiceImpl<ModelDao, ModelEntity> imp
         BusinessEntity businessEntity = (BusinessEntity) redisService.hget(RedisConstant.WORKFLOW_BUSINESS_KEY, DEFAULT_BUSINESS_CODE);
         if (businessEntity != null) {
             ProcessInstanceCreateRequest request = new ProcessInstanceCreateRequest();
-            request.setSubmitter(SecurityUtil.getUserId());
+            request.setSubmitter("1");
             request.setBusinessKey(id);
             request.setBusinessCode(DEFAULT_BUSINESS_CODE);
             request.setBusinessAuditGroup(businessEntity.getBusinessAuditGroup());
@@ -249,7 +250,7 @@ public class ModelServiceImpl extends BaseServiceImpl<ModelDao, ModelEntity> imp
             String tempalte = businessEntity.getBusinessTempalte();
             String businessName = businessEntity.getBusinessName();
             Map<String, String> parameters = new HashMap<>(4);
-            parameters.put(MsgFormatUtil.TEMPALTE_NICKNAME, SecurityUtil.getNickname());
+            parameters.put(MsgFormatUtil.TEMPALTE_NICKNAME, "admin");
             parameters.put(MsgFormatUtil.TEMPALTE_DATETIME, DateUtil.formatLocalDateTime(LocalDateTime.now()));
             parameters.put(MsgFormatUtil.TEMPALTE_BUSINESS_NAME, businessName);
             parameters.put(MsgFormatUtil.TEMPALTE_BUSINESS_KEY, id);

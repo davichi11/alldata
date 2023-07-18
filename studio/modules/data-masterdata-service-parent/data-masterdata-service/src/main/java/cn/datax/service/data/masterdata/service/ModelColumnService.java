@@ -25,4 +25,12 @@ public interface ModelColumnService extends BaseService<ModelColumnEntity> {
     void deleteModelColumnById(String id);
 
     void deleteModelColumnBatch(List<String> ids);
+
+    /**
+     * 获取列名通过表名字
+     *
+     * @param tableName 表名
+     * @return {@link List}<{@link String}>
+     */
+    List<String> getColumnsByTableName(String tableName);
 }

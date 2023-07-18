@@ -2,7 +2,7 @@ package cn.datax.service.workflow.api.feign.factory;
 
 import cn.datax.service.workflow.api.feign.FlowInstanceServiceFeign;
 import cn.datax.service.workflow.api.feign.fallback.FlowInstanceServiceFeignFallbackImpl;
-import feign.hystrix.FallbackFactory;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 @Component

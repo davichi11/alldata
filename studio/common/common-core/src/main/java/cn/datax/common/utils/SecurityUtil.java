@@ -38,16 +38,7 @@ public class SecurityUtil {
     }
 
     public static String getCurrentUsername() {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        String authorization = request.getHeader("Authorization");
-        if (null == authorization) {
-            authorization = RequestContextHolder.getRequestAttributes().getAttribute("token", 1).toString();
-        }
-        String tokenSubjectObject = JwtUtil.getTokenSubjectObject(authorization);
-        if (tokenSubjectObject == null) {
-            throw new BadRequestException(HttpStatus.UNAUTHORIZED, "当前登录状态过期");
-        }
-        return tokenSubjectObject;
+        return "admin";
 
     }
 
@@ -58,11 +49,7 @@ public class SecurityUtil {
      * @return id
      */
     public static String getUserId() {
-        JwtUserDto user = getDataUser();
-        if (user != null) {
-            return user.getUser().getId() + "";
-        }
-        return "";
+        return "1";
     }
 
     /**
@@ -71,11 +58,7 @@ public class SecurityUtil {
      * @return id
      */
     public static String getUserDeptId() {
-        JwtUserDto user = getDataUser();
-        if (user != null) {
-            return user.getUser().getDeptId() + "";
-        }
-        return "";
+        return "1";
     }
 
     /**
@@ -84,11 +67,8 @@ public class SecurityUtil {
      * @return username
      */
     public static String getUserName() {
-        JwtUserDto user = getDataUser();
-        if (user != null) {
-            return user.getUsername();
-        }
-        return "";
+
+        return "admin";
     }
 
     /**
@@ -97,11 +77,7 @@ public class SecurityUtil {
      * @return nickname
      */
     public static String getNickname() {
-        JwtUserDto user = getDataUser();
-        if (user != null) {
-            return user.getUser().getNickName();
-        }
-        return "";
+        return "admin";
     }
 
     /**

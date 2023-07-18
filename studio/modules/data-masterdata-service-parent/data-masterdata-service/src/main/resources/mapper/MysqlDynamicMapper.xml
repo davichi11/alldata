@@ -3,7 +3,7 @@
 <mapper namespace="cn.datax.service.data.masterdata.dao.MysqlDynamicDao">
 
     <insert id="createTable" parameterType="cn.datax.service.data.masterdata.api.entity.ModelEntity">
-        CREATE TABLE `${modelPhysicalTable}` (
+       CREATE TABLE `${modelPhysicalTable}` (
             <foreach collection="modelColumns" item="column" separator=",">
                 `${column.columnName}` ${column.columnDefinition}
                 <if test="column.defaultValue != null and column.defaultValue != ''">

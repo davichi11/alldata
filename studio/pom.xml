@@ -19,7 +19,7 @@
         <module>box</module>
         <module>service-api</module>
         <module>common</module>
-        <module>config</module>
+<!--        <module>config</module>-->
         <module>eureka</module>
         <module>gateway</module>
         <module>generic</module>

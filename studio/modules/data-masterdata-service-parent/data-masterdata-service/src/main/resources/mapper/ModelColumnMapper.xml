@@ -46,4 +46,14 @@
         model_id, column_name, column_comment, column_type, column_length, column_scale, default_value, is_system, is_pk, is_required, is_insert, is_edit, is_detail, is_list, is_query, query_type, is_bind_dict, bind_dict_type_id, bind_dict_column, html_type, sort
     </sql>
 
+    <select id="selectByTableName" resultMap="BaseResultMap">
+        select
+        c.id, c.status, c.create_by, c.create_time, c.update_by, c.update_time, c.remark, c.model_id, c.column_name,
+        c.column_comment, c.column_type, c.column_length, c.column_scale, c.default_value, c.is_system, c.is_pk,
+        c.is_required, c.is_insert, c.is_edit, c.is_detail, c.is_list, c.is_query, c.query_type, c.is_bind_dict,
+        c.bind_dict_type_id, c.bind_dict_column, c.html_type, c.sort
+        from masterdata_model_column c
+        left join masterdata_model m on m.id = c.model_id
+        where m.model_physical_table = #{tableName}
+    </select>
 </mapper>

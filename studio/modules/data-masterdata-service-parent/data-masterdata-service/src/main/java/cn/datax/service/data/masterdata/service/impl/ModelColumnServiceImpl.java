@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -63,5 +64,11 @@ public class ModelColumnServiceImpl extends BaseServiceImpl<ModelColumnDao, Mode
     @Transactional(rollbackFor = Exception.class)
     public void deleteModelColumnBatch(List<String> ids) {
         modelColumnDao.deleteBatchIds(ids);
+    }
+
+    @Override
+    public List<String> getColumnsByTableName(String tableName) {
+        List<ModelColumnEntity> modelColumnList = modelColumnDao.selectByTableName(tableName);
+        return modelColumnList.stream().map(ModelColumnEntity::getColumnName).collect(Collectors.toList());
     }
 }

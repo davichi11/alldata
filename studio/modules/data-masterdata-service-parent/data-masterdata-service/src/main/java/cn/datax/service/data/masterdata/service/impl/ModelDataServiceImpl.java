@@ -5,6 +5,7 @@ import cn.datax.common.utils.SecurityUtil;
 import cn.datax.service.data.masterdata.api.entity.ModelDataEntity;
 import cn.datax.service.data.masterdata.api.query.ModelDataQuery;
 import cn.datax.service.data.masterdata.dao.MysqlDynamicDao;
+import cn.datax.service.data.masterdata.service.ModelColumnService;
 import cn.datax.service.data.masterdata.service.ModelDataService;
 import cn.datax.service.data.masterdata.utils.SearchUtil;
 import cn.hutool.core.util.StrUtil;
@@ -16,15 +17,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ModelDataServiceImpl implements ModelDataService {
 
     @Autowired
     private MysqlDynamicDao dynamicDao;
+
+    @Autowired
+    private ModelColumnService columnService;
 
     private static String DEFAULT_PRIMARY_KEY = "id";
     private static String DEFAULT_CREATE_BY = "create_by";
@@ -42,12 +44,11 @@ public class ModelDataServiceImpl implements ModelDataService {
             throw new DataException("数据库表为空");
         }
         QueryWrapper queryWrapper = SearchUtil.parseWhereSql(modelDataQuery);
-        List<String> columns = modelDataQuery.getColumns();
+        Set<String> columns = new HashSet<>(columnService.getColumnsByTableName(tableName));
         columns.addAll(SUPER_COLUMNS);
-        String[] array = columns.toArray(new String[columns.size()]);
+        String[] array = columns.toArray(new String[0]);
         queryWrapper.select(array);
-        IPage<Map<String, Object>> page = dynamicDao.getPageModelDatas(new Page<>(modelDataQuery.getPageNum(), modelDataQuery.getPageSize()), queryWrapper, tableName);
-        return page;
+        return dynamicDao.getPageModelDatas(new Page<>(modelDataQuery.getPageNum(), modelDataQuery.getPageSize()), queryWrapper, tableName);
     }
 
     @Override
@@ -60,7 +61,7 @@ public class ModelDataServiceImpl implements ModelDataService {
         datas.put(DEFAULT_PRIMARY_KEY, new DefaultIdentifierGenerator().nextId(null));
         datas.put(DEFAULT_CREATE_BY, SecurityUtil.getUserId());
         datas.put(DEFAULT_CREATE_TIME, LocalDateTime.now());
-        datas.put(DEFAULT_CREATE_DEPT, SecurityUtil.getUserDeptId());
+//        datas.put(DEFAULT_CREATE_DEPT, SecurityUtil.getUserDeptId());
         datas.put(DEFAULT_UPDATE_BY, SecurityUtil.getUserId());
         datas.put(DEFAULT_UPDATE_TIME, LocalDateTime.now());
         dynamicDao.insertData(modelDataEntity);
